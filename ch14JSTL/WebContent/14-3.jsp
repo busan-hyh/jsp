@@ -1,5 +1,4 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -14,6 +13,7 @@
 	final String PASS = "1234";
 	
 	Connection conn = null;//finally에 쓸 conn 선언
+	ArrayList<USER> list = new ArrayList<>();//테이블에 불러올 list 선언
 	
 	try{
 	//2-1. JDBC 드라이버 로드
@@ -32,9 +32,8 @@
 	
 	//2-5. 결과셋 처리(SELECT 쿼리일 경우)★핵★심★
 	//불러온 rs를 next()를 통해 각 컬럼을 자바빈으로 만든다.(자바빈 패키지 생성필요)
-	//자바빈을 arrayList로 정렬한다.
-	ArrayList<USER> list = new ArrayList<>();//<제네릭>
-	
+	//자바빈을 arrayList로 정렬한다. ..는 전역변수로 올렸음. 
+		
 	while(rs.next()){
 		//자바빈 객체 생상
 		USER user = new USER();
@@ -55,7 +54,7 @@
 		e.printStackTrace();//1~5까지 에러가 뜨면 그 내용 출력
 	} finally {
 		//2-6. DB 종료
-		
+		conn.close();
 	}
 %>
 <!DOCTYPE html>
@@ -80,17 +79,17 @@
 			<th>삭제</th>
 		</tr>
 		<%
-			for(){
+			for(USER user : list){ //USER형태의 user객체 가져올거임
 		%>
 		<tr>
-			<td>seq</td>
-			<td>uid</td>
-			<td>name</td>
-			<td>hp</td>
-			<td>addr</td>
-			<td>pos</td>
-			<td>dep</td>
-			<td>rdate</td>
+			<td><%= user.getSeq() %></td>
+			<td><%= user.getUid() %></td>
+			<td><%= user.getName() %></td>
+			<td><%= user.getHp() %></td>
+			<td><%= user.getAddr() %></td>
+			<td><%= user.getPos() %></td>
+			<td><%= user.getDep() %></td>
+			<td><%= user.getRdate().substring(2,10) %></td>
 			<td><a href="#">edit</a></td>
 			<td><a href="#">del</a></td>
 		</tr>
