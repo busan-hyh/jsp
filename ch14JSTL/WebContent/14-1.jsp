@@ -35,9 +35,21 @@
 			</td>
 		</tr>
 		<tr>
-			<td>부서</td>
+			<td>직급</td>
 			<td>
 				<select name="pos">
+					<option>사장</option>
+					<option>이사</option>
+					<option>부장</option>
+					<option>팀장</option>
+					<option>대리</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>부서</td>
+			<td>
+				<select name="dep">
 					<option value="101">경영지원부</option>
 					<option value="102">인사부</option>
 					<option value="103">개발부</option>
