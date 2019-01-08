@@ -14,6 +14,8 @@
 	
 	Connection conn = null;//finally에 쓸 conn 선언
 	ArrayList<USER> list = new ArrayList<>();//테이블에 불러올 list 선언
+	Statement stmt = null;//↓rs선언에 필요한 stmt 선언
+	ResultSet rs = null;//finally에 쓸 rs 선언
 	
 	try{
 	//2-1. JDBC 드라이버 로드
@@ -23,12 +25,12 @@
 	conn = DriverManager.getConnection(HOST, USER, PASS);
 	
 	//2-3. 쿼리실행체 생성
-	Statement stmt = conn.createStatement();
+	stmt = conn.createStatement();
 	
 	//2-4. 쿼리 실행
 	//SELECT문일때는 executeQuery를 쓴다. SELECT만 ResultSet이 표시되므로 대입연산자가 필요.(콘솔이 필요한것처럼) 
 	//그외 명령문은 executeUpdate를 쓴다.
-	ResultSet rs = stmt.executeQuery("SELECT * FROM `USER`;"); //rs객체가 불러온 데이터임!!
+	rs = stmt.executeQuery("SELECT * FROM `USER`;"); //rs객체가 불러온 데이터임!!
 	
 	//2-5. 결과셋 처리(SELECT 쿼리일 경우)★핵★심★
 	//불러온 rs를 next()를 통해 각 컬럼을 자바빈으로 만든다.(자바빈 패키지 생성필요)
@@ -54,6 +56,8 @@
 		e.printStackTrace();//1~5까지 에러가 뜨면 그 내용 출력
 	} finally {
 		//2-6. DB 종료
+		rs.close();
+		stmt.close();
 		conn.close();
 	}
 %>
