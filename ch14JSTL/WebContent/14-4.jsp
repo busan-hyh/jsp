@@ -16,7 +16,8 @@
 	Connection conn = DriverManager.getConnection(HOST, USER, PASS);
 	Statement stmt = conn.createStatement();
 	
-	stmt.executeUpdate("DELETE FROM `USER` WHERE SEQ=('"+seq+"');");
+	String sql="DELETE FROM `USER` WHERE SEQ="+seq;
+	stmt.executeUpdate(sql);
 	
 	stmt.close();
 	conn.close();
