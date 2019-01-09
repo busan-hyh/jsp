@@ -95,9 +95,11 @@
 			<td><%= user.getDep() %></td>
 			<td><%= user.getRdate().substring(2,10) %></td>
 			<td><a href="#">edit</a></td>
-			<td><a href="#">del</a></td>
+			<td><a href="./14-4.jsp?seq=<%= user.getSeq() %>">del</a></td>
 		</tr>
 		<% } %>
 	</table>
+	<a href="./14-1.jsp">직원 등록</a>
+	
 </body>
 </html>

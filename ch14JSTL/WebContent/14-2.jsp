@@ -40,5 +40,6 @@
 	conn.close();
 	
 	//3. 리다이렉트
+	response.sendRedirect("./14-3.jsp");
 %>
 <h2>등록완료</h2>
