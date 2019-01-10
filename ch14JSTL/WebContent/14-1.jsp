@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>직원 등록</h3>
+	<h3>직원등록</h3>
 	<form action="./14-2.jsp" method="get">
 	<table border="1" style="border:1px solid; border-collapse: collapse;">
 		<tr>
