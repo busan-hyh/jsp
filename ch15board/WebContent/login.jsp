@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -25,7 +27,7 @@
 				<div class="info">
 					<h3>회원로그인 안내</h3>
 					<p>아직 회원이 아니시면 회원으로 가입하세요.</p>
-					<div><a href="#">회원가입</a></div>
+					<div><a href="./terms.jsp">회원가입</a></div>
 				</div>			
 			</section>
 		</div>
