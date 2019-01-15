@@ -6,18 +6,46 @@
 		<meta charset="UTF-8">
 		<title>회원가입</title>
 		<link rel="stylesheet" href="./css/style.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			//$().ready(); = jQuery().ready(); .은 메서드 체인이라고 부름
+			//$(document).ready(function(){}); = $(function(){}) <-이렇게 줄여쓸 수 있다
+			$(function(){
+				//var input = $('input[name=uid]');name이 uid인 input 태그의 객체
+				//input.focusout(function(){});이벤트함수, 핸들러가 들어감(익명함수) 이 두줄을 아래처럼 줄여쓸 수 있다
+				$('input[name=uid]').focusout(function(){//여기의 this는 name이 uid인 input 태그 객체이다
+					var tag = $(this); //this는 'input[name=uid]'
+					var uid = tag.val();
+					var url = './proc/checkUid.jsp?uid='+uid; //uid를 가져가야 하니까 uid변수를 파라미터로 가져감 
+					
+					$.ajax({ //전형적인 에이젝스 함수의 옵션들 4개
+						url: url,
+						type: 'get',
+						dataType: 'json',
+						success: function(data){
+							if(data.result == 1){
+								$('.resultId').css('color', 'red').text('이미 사용중');
+								tag.focus();
+							} else {
+								$('.resultId').css('color', 'green').text('사용가능');
+							}
+						}
+					});
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<div id="member">
 			<section class="register">
-				<form action="#" method="POST">
+				<form action="./proc/register.jsp" method="POST">
 					<section>
 						<table>
 							<caption>사이트 이용정보 입력</caption>
 							<tr>
 								<td>아이디</td>
 								<td>
-									<input type="text" name="id" placeholder="아이디를 입력" required />
+									<input type="text" name="uid" placeholder="아이디를 입력" required />
 									<span class="resultId"></span>
 								</td>
 							</tr>
