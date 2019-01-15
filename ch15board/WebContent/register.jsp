@@ -32,6 +32,64 @@
 						}
 					});
 				});
+				//닉네임 중복체크
+				$('input[name=nick]').focusout(function(){
+					var tag = $(this);
+					var nick = tag.val();
+					
+					$.ajax({
+						url: './proc/checkNick.jsp?nick='+nick,
+						type: 'get',
+						dataTyep: 'json',
+						success: function(data){
+							if(data.result == 1){
+								$('.resultNick').css('color', 'red').text('이미 사용중');
+								tag.focus();
+							} else {
+								$('.resultNick').css('color', 'green').text('사용가능');
+							}
+						}
+					});
+				});
+				
+				//메일 중복체크
+				$('input[name=email]').focusout(function(){
+					var tag = $(this);
+					var email = tag.val();
+					
+					$.ajax({
+						url: './proc/checkMail.jsp?email='+email,
+						type: 'get',
+						dataTyep: 'json',
+						success: function(data){
+							if(data.result == 1){
+								$('.resultMail').css('color', 'red').text('이미 사용중');
+								tag.focus();
+							} else {
+								$('.resultMail').css('color', 'green').text('사용가능');
+							}
+						}
+					});
+				});
+				//폰 중복체크
+				$('input[name=hp]').focusout(function(){
+					var tag = $(this);
+					var hp = tag.val();
+					
+					$.ajax({
+						url: './proc/checkHp.jsp?hp='+hp,
+						type: 'get',
+						dataTyep: 'json',
+						success: function(data){
+							if(data.result == 1){
+								$('.resultHp').css('color', 'red').text('이미 사용중');
+								tag.focus();
+							} else {
+								$('.resultHp').css('color', 'green').text('사용가능');
+							}
+						}
+					});
+				});
 			});
 		</script>
 	</head>
@@ -70,19 +128,23 @@
 								<td>별명</td>
 								<td>
 									<span class="info">공백없이 한글, 영문, 숫자만 입력가능</span>
-									<div>
-										<input type="text" name="nick" placeholder="별명을 입력" required />
-									</div>
+									<input type="text" name="nick" placeholder="별명을 입력" required />
 									<span class="resultNick"></span>
 								</td>
 							</tr>
 							<tr>
 								<td>EMAIL</td>
-								<td><input type="email" name="email" placeholder="이메일을 입력" 	required /></td>
+								<td>
+								<input type="email" name="email" placeholder="이메일을 입력" 	required />
+								<span class="resultMail"></span>
+								</td>
 							</tr>
 							<tr>
 								<td>휴대폰</td>
-								<td><input type="text" name="hp" placeholder="-포함 13자리를 입력" maxlength="13" required /></td>
+								<td>
+								<input type="text" name="hp" placeholder="-포함 13자리를 입력" maxlength="13" required />
+								<span class="resultHp"></span>
+								</td>
 							</tr>
 							<tr>
 								<td>주소</td>
