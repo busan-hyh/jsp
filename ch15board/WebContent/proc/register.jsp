@@ -55,5 +55,5 @@
 	psmt.close();
 	conn.close();
 	
-	response.sendRedirect("../login.jsp");
+	response.sendRedirect("../login.jsp?register=success");//레지스터 석세스 파라미터 들고가기
 %>
