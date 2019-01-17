@@ -1,3 +1,5 @@
+<%@page import="kr.co.board1.vo.TermsVO"%>
+<%@page import="kr.co.board1.service.MemberService"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -5,37 +7,8 @@
 <%@ page contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	//2. DB연결 후 쿼리실행 모~~두 외울것!!!
-	final String HOST = "jdbc:mysql://192.168.0.126:3306/hyh";
-	final String USER = "hyh";
-	final String PASS = "1234";
-	
-	//2-1. JDBC 드라이버 로드
-	Class.forName("com.mysql.jdbc.Driver");
-	
-	//2-2. DB 접속
-	Connection conn = DriverManager.getConnection(HOST, USER, PASS);
-	
-	//2-3. 쿼리실행체 생성
-	Statement stmt = conn.createStatement();
-	
-	//2-4. 쿼리 실행
-	//SELECT문일때는 executeQuery를 쓴다. SELECT만 ResultSet이 표시되므로 대입연산자가 필요.(콘솔이 필요한것처럼) 
-	//그외 명령문은 executeUpdate를 쓴다.
-	ResultSet rs = stmt.executeQuery("SELECT * FROM `JSP_TERMS`;"); //rs객체가 불러온 데이터임!!
-	
-	//2-5. 데이터 설정
-	String terms = null;
-	String privacy = null;
-	if(rs.next()){
-		terms = rs.getString(1);
-		privacy = rs.getString(2);
-	}
-	
-	//2-6. 서버닫기
-	rs.close();
-	stmt.close();
-	conn.close();
+	MemberService service = MemberService.getInstance();
+	TermsVO vo = service.terms();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +42,7 @@
 					<caption>사이트 이용약관</caption>
 					<tr>
 						<td>
-							<textarea readonly><%= terms %></textarea>
+							<textarea readonly><%= vo.getTerms() %></textarea>
 							<div>
 								<label><input type="checkbox" name="chk1" />&nbsp;동의합니다.</label>        
 							</div>
@@ -82,7 +55,7 @@
 					<caption>개인정보 취급방침</caption>
 					<tr>
 						<td>
-							<textarea readonly><%= privacy %></textarea>
+							<textarea readonly><%= vo.getPrivacy() %></textarea>
 							<div>
 								<label><input type="checkbox" name="chk2" />&nbsp;동의합니다.</label>        
 							</div>
