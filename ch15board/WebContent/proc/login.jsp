@@ -23,7 +23,7 @@
 	//5단계 세션저장
 	if(rs.next()){
 		//회원일 경우(쿼리참조!) 세션에 저장
-		MemberVO vo = new MemberVO();
+		MemberVO vo = new MemberVO();//자동으로 SID라는 브라우저 식별값을 추가함.
 		vo.setSeq(rs.getInt(1)); //public은 sql처럼 바로 불러올 수있지만 private는 set으로 불러온다.
 		vo.setUid(rs.getString(2));
 		vo.setPass(rs.getString(3));
