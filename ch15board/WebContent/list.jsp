@@ -1,5 +1,6 @@
+<%@page import="kr.co.board1.service.BoardService"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="kr.co.board1.vo.ListVO"%>
+<%@page import="kr.co.board1.vo.BoardVO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="kr.co.board1.config.SQL"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -19,10 +20,10 @@
 	PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_LIST);
 	ResultSet rs = psmt.executeQuery();
 	
-	ArrayList<ListVO> boardList = new ArrayList<>();
+	ArrayList<BoardVO> boardList = new ArrayList<>();
 	
 	while(rs.next()){
-		ListVO vo = new ListVO();
+		BoardVO vo = new BoardVO();
 		vo.setSeq(rs.getInt(1));
 		vo.setParent(rs.getInt(2));
 		vo.setComment(rs.getInt(3));
@@ -37,9 +38,11 @@
 		vo.setNick(rs.getString("nick"));//숫자로 순서를 표시해도 되고 컬럼명을 지정해도 됨
 		
 		boardList.add(vo);
-		
-	}
+		}
 	
+	rs.close();
+	psmt.close();
+	conn.close();
 %>
 <!DOCTYPE html>
 <html>
@@ -64,14 +67,14 @@
 					</tr>
 
 					<%
-						for(ListVO li : boardList){
+						for(BoardVO vo : boardList) {
 					%>
 					<tr>
-						<td><%= li.getSeq() %></td>
-						<td><a href="#"><%= li.getTitle() %></a>&nbsp;[<%= li.getComment() %>]</td>
-						<td><%= li.getNick() %></td>
-						<td><%= li.getRdate().substring(2,10) %></td>
-						<td><%= li.getHit() %></td>
+						<td><%= vo.getSeq() %></td>
+						<td><a href="./view.jsp?seq=<%= vo.getSeq() %>"><%= vo.getTitle() %></a>&nbsp;[<%= vo.getComment() %>]</td>
+						<td><%= vo.getNick() %></td>
+						<td><%= vo.getRdate().substring(2,10) %></td>
+						<td><%= vo.getHit() %></td>
 					</tr>
 					<% } %>
 				</table>
