@@ -4,6 +4,7 @@
 <%
 	BoardService service = BoardService.getInstance();
 	service.delete(request);
+	//service.deleteHit(request);
 	
 	response.sendRedirect("../list.jsp");
 %>

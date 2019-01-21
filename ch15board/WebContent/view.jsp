@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="kr.co.board1.vo.MemberVO"%>
 <%@page import="kr.co.board1.service.BoardService"%>
 <%@page import="kr.co.board1.vo.BoardVO"%>
 <%@page import="java.sql.ResultSet"%>
@@ -10,6 +12,9 @@
 <%
 	BoardService service = BoardService.getInstance();
 	BoardVO vo = service.view(request);
+	MemberVO member = service.getMember(session);
+	ArrayList<BoardVO> comList = service.listComment(vo.getSeq());
+	
 	//service.updateHit(vo.getSeq()); 
 %>
 <!DOCTYPE html>
@@ -57,22 +62,28 @@
 			<!-- 댓글리스트 -->
 			<section class="comments">
 				<h3>댓글목록</h3>
-				
+				<%
+					for(BoardVO commentVO : comList) {
+				%>
 				<div class="comment">
 					<span>
-						<span>홍길동</span>
-						<span>18-03-01</span>
+						<span><%= commentVO.getNick() %></span>
+						<span><%= commentVO.getRdate().substring(2,10) %></span>
 					</span>
-					<textarea>테스트 댓글입니다.</textarea>
+					<textarea><%= commentVO.getContent() %></textarea>
 					<div>
-						<a href="#" class="del">삭제</a>
+						<a href="./proc/deleteComm.jsp?seq=<%= commentVO.getSeq() %>" class="del">삭제</a>
 						<a href="#" class="mod">수정</a>
 					</div>
 				</div>
-			
+				<% }%>
+				<%
+					if(comList.size() == 0) {
+				%>
 				<p class="empty">
 					등록된 댓글이 없습니다.
 				</p>
+				<% } %>
 				
 			</section>
 			
@@ -80,7 +91,9 @@
 			<section class="comment_write">
 				<h3>댓글쓰기</h3>
 				<div>
-					<form action="#" method="post">
+					<form action="./proc/commentWrite.jsp" method="post">
+					<input type="hidden" name="seq" value="<%= vo.getSeq() %>">
+					<input type="hidden" name="uid" value="<%= member.getUid() %>">
 						<textarea name="comment" rows="5"></textarea>
 						<div class="btns">
 							<a href="#" class="cancel">취소</a>

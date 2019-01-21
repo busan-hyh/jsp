@@ -19,7 +19,7 @@
 	<div class="write">
 	<form action="./proc/modify.jsp" method="post">
 		<!-- post타입은 파라미터전송을 못하므로 히든으로 심어준다. -->
-		<inpyt type="hidden" name="seq" value="<%= vo.getSeq() %>" />
+		<input type="hidden" name="seq" value="<%= vo.getSeq() %>" />
 		<table>
 			<tr>
 			<td>제목</td>

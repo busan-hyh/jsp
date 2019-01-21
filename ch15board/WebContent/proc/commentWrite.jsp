@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%
 	BoardService service = BoardService.getInstance();
-	service.delete(request);
+	String seq = service.writeComment(request);
 	
-	response.sendRedirect("../list.jsp");
+	response.sendRedirect("../view.jsp?seq="+seq);
 %>
