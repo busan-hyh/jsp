@@ -144,11 +144,11 @@ public class BoardService {
 		
 		return parent;
 	}
-	public ArrayList<BoardVO> listComment(int seq) throws Exception {
+	public ArrayList<BoardVO> listComment(String seq) throws Exception {
 		
 		Connection conn = DBConfig.getConnection();
 		PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_COMM);
-		psmt.setInt(1, seq);
+		psmt.setString(1, seq);
 		ResultSet rs = psmt.executeQuery();
 		
 		ArrayList<BoardVO> commentList = new ArrayList<>();
