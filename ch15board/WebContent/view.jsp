@@ -13,9 +13,6 @@
 	BoardService service = BoardService.getInstance();
 	BoardVO vo = service.view(request);
 	MemberVO member = service.getMember(session);
-	
-	
-	
 	//service.updateHit(vo.getSeq()); 
 %>
 <!DOCTYPE html>
@@ -45,7 +42,7 @@
 									
 									var delUrl="./proc/deleteComm.jsp?seq="+result[i].seq+"&parent="+result[i].parent;
 									
-									if(i > 0){//이게 없으면 댓글이 하나만 출력됨. 두번Wo 댓글부터~ 
+									if(i > 0){//이게 없으면 댓글이 하나만 출력됨. 두번째 댓글부터~ 
 										var commentCloned = comment.clone();
 										commentCloned.find('span > .nick').text(result[i].nick);
 										commentCloned.find('span > .date').text(result[i].rdate.substring(2,10));
@@ -110,7 +107,7 @@
 						<span class="nick"></span>
 						<span class="date"></span>
 					</span>
-					<textarea></textarea>
+					<textarea readonly></textarea>
 					<div>
 						<a href="#" class="del">삭제</a>
 						<a href="#" class="mod">수정</a>

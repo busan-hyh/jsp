@@ -15,9 +15,25 @@
 		pageContext.forward("./login.jsp");//리다이렉트는 페이지가 넘어가기전에 로딩이 되므로 에러가 뜬다
 	}
 	
+	request.setCharacterEncoding("UTF-8");
+	String pg = request.getParameter("pg");
+	
+	//LIMIT용 int 
+	int start = 0;
+	//pg값을 못받아서 list.jsp를 띄우면 널포인트에러가 뜨므로 NULL체크를 해야한다. 
+	if(pg==null){
+		start=1;
+	} else {
+		start=Integer.parseInt(pg);
+	}	
+	
+	
 	Connection conn = DBConfig.getConnection();
 	
+	start = (start-1)*10;
+	
 	PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_LIST);
+	psmt.setInt(1, start);//LIMIT용 int 
 	ResultSet rs = psmt.executeQuery();
 	
 	ArrayList<BoardVO> boardList = new ArrayList<>();
@@ -43,6 +59,31 @@
 	rs.close();
 	psmt.close();
 	conn.close();
+	
+	//페이지번호 계산(하단에 뜨는 페이지번호)
+	BoardService service = BoardService.getInstance();
+	int total = service.getTotal();
+	int pgEnd = 0;
+	
+	if(total % 10 == 0) {
+		pgEnd = total/10;
+	} else {
+		pgEnd = (total/10) + 1;
+	}
+	
+	//글 카운터 번호 계산(글번호)
+	int count = total-start;
+	
+	//페이지 그룹 계산(10개씩 뜨도록)
+	int currentPage = Integer.parseInt(pg);
+	int currentPageGroup = (int)Math.ceil(currentPage/10.0);
+	//ex>[currentPage/10+1] 3pg의 경우 0.33...이지만 int이므로 0이 나옴. 거기+1
+	//	 [(int)Math.ceil(currentPage/10.0)] 하지만 10pg는 +1하면 안되므로 3pg를 10.0로 나눠서 0.333이 나올때 올림하면 된당
+	int groupStart = (currentPageGroup - 1) * 10 + 1; //각 그룹의 시작번호 계산
+	int groupEnd = currentPageGroup * 10; //각 그룹의 끝번호 계산
+	if (groupEnd > pgEnd) { //39pg까지 있는데 40이 뜨면 안되므로
+		groupEnd = pgEnd;
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -70,7 +111,7 @@
 						for(BoardVO vo : boardList) {
 					%>
 					<tr>
-						<td><%= vo.getSeq() %></td>
+						<td><%= count-- %></td>
 						<td><a href="./view.jsp?seq=<%= vo.getSeq() %>"><%= vo.getTitle() %></a>&nbsp;[<%= vo.getComment() %>]</td>
 						<td><%= vo.getNick() %></td>
 						<td><%= vo.getRdate().substring(2,10) %></td>
@@ -82,9 +123,15 @@
 			<!-- 페이징 -->
 			<nav class="paging">
 				<span> 
-				<a href="#" class="prev">이전</a>
-				<a href="#" class="num">1</a>
-				<a href="#" class="next">다음</a>
+				<% if(groupStart > 1) { %>
+				<a href="./list.jsp?pg=<%= groupStart-1 %>" class="prev">이전</a>
+				<% } %>
+				<% for(int current=groupStart; current<=groupEnd; current++) { %>
+				<a href="./list.jsp?pg=<%= current %>" class="num"><%= current %></a>
+				<% } %>
+				<% if(groupEnd < pgEnd) { %>
+				<a href="./list.jsp?pg=<%= groupEnd+1 %>" class="next">다음</a>
+				<% } %>
 				</span>
 			</nav>
 			<a href="./write.jsp" class="btnWrite">글쓰기</a>
@@ -92,13 +139,4 @@
 	</body>
 
 </html>
-
-
-
-
-
-
-
-
-
 

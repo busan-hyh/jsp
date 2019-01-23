@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -176,5 +177,21 @@ public class BoardService {
 		conn.close();
 		
 		return commentList;
+	}
+	public int getTotal() throws Exception {
+		int total = 0;
+		Connection conn = DBConfig.getConnection();
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(SQL.SELECT_TOTAL);
+		if(rs.next()) {
+			total = rs.getInt(1);
+		}
+		
+		rs.close();
+		stmt.close();
+		conn.close();
+		
+		return total;
 	}
 }
