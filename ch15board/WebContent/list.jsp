@@ -21,14 +21,14 @@
 	BoardService service = BoardService.getInstance();
 	
 	//1. LIMIT용 int 
-	int start = service.getLimitStart(pg);
+	int limit = service.getLimitStart(pg);
 	
 	//2. 페이지번호 계산(하단에 뜨는 페이지번호)
 	int total = service.getTotal();
 	int pgEnd = service.getPageEnd(total);
 	
 	//글 카운터 번호 계산(글번호)
-	int count = total-start;
+	int count = total-limit;
 	
 	//3. 페이지 그룹 계산(10개씩 뜨도록)(groupStart와 groupEnd가 둘 다 쓰이지만 return은 1개만 되므로 배열을 써보자!)
 	int[] groupStartEnd = service.getPageGroupStartEnd(pg, pgEnd);
@@ -37,7 +37,7 @@
 	Connection conn = DBConfig.getConnection();
 	
 	PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_LIST);
-	psmt.setInt(1, start);//LIMIT용 int 
+	psmt.setInt(1, limit);//LIMIT용 int 
 	ResultSet rs = psmt.executeQuery();
 	
 	ArrayList<BoardVO> boardList = new ArrayList<>();

@@ -27,6 +27,20 @@ public class BoardService {
 	
 	public void insertBoard() throws Exception {}
 	public void list() throws Exception {}
+	/*public void write(String... args, int file) throws Exception {//args 쓰는 방법...! 
+		Connection conn = DBConfig.getConnection();
+		
+		PreparedStatement psmt = conn.prepareStatement(SQL.INSERT_BOARD);
+		psmt.setString(1, args[0]);
+		psmt.setString(2, args[1]);
+		psmt.setInt(3, file);
+		psmt.setString(4, args[2]);
+		psmt.setString(5, args[3]);
+		psmt.executeUpdate();
+		
+		psmt.close();
+		conn.close();
+	}*/
 	
 	public void updateHit(String seq) throws Exception {
 		Connection conn = DBConfig.getConnection();
@@ -199,12 +213,12 @@ public class BoardService {
 		//throws Exception은 db연동이 아닐땐 노필요
 		int start = 0;
 		//pg값을 못받아서 list.jsp?pg=를 띄우면 널포인트에러가 뜨므로 NULL체크를 해야한다. 
-		if(pg==null){
-			start=1;
-		} else {
-			start=Integer.parseInt(pg);
-		}	
-		return (start-1)*10;
+		if(pg == null){
+			start = 1;
+		}else{
+			start = Integer.parseInt(pg);
+		}
+		return (start - 1) * 10;
 	}
 	public int getPageEnd(int total) {
 		int pgEnd = 0;

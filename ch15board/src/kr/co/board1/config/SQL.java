@@ -6,9 +6,14 @@ public class SQL {
 											+ "cate='notice', "
 											+ "title=?, "
 											+ "content=?, "
+											+ "file=?, "
 											+ "uid=?, "
 											+ "regip=?, "
 											+ "rdate=NOW()";
+	public static final String INSERT_FILE	= "INSERT INTO `JSP_FILE` "
+											+ "(parent, oldName, newName, rdate) "
+											+ "VALUES (?,?,?,NOW())";
+	public static final String SELECT_MAXS	= "SELECT MAX(seq) FROM `JSP_BOARD`";
 	public static final String SELECT_LIST	= "SELECT b.*, m.nick FROM JSP_BOARD "
 											+ "AS b JOIN JSP_MEMBER AS m ON b.uid = m.uid "
 											+ "WHERE parent=0 ORDER BY b.seq DESC "
