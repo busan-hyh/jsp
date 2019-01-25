@@ -91,7 +91,11 @@
 					%>
 					<tr>
 						<td><%= count-- %></td>
-						<td><a href="./view.jsp?seq=<%= vo.getSeq() %>"><%= vo.getTitle() %></a>&nbsp;[<%= vo.getComment() %>]</td>
+						<td><a href="./view.jsp?seq=<%= vo.getSeq() %>"><%= vo.getTitle() %>
+						<% if(vo.getFile() != 0){ %>
+						<img src="./img/file_ico.png">
+						<% } %>
+						</a>&nbsp;[<%= vo.getComment() %>]</td>
 						<td><%= vo.getNick() %></td>
 						<td><%= vo.getRdate().substring(2,10) %></td>
 						<td><%= vo.getHit() %></td>

@@ -73,8 +73,9 @@ public class BoardService {
 		Connection conn = DBConfig.getConnection();
 		
 		updateHit(seq);//위의 updateHit을 실행시키면서 seq를 날린다->뷰페이지에서 직접때리기로 바꿈
+		
 		//셀렉트할때//
-		PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_VIEW);
+		PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_VIEW_WIHT_FILE);
 		psmt.setString(1, seq);//string으로 파라미터가 들어가므로 ?seq='1' 이 주소가 된다. int든 String이든 SELECT에선 같음
 		
 		ResultSet rs = psmt.executeQuery();
@@ -92,7 +93,11 @@ public class BoardService {
 			vo.setUid(rs.getString(9));
 			vo.setRegip(rs.getString(10));
 			vo.setRdate(rs.getString(11));
+			vo.setOldName(rs.getString(14));
+			vo.setNewName(rs.getString(15));
+			vo.setDownload(rs.getInt(16));
 		}
+		
 		
 		rs.close();
 		psmt.close();
