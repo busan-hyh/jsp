@@ -15,13 +15,12 @@
   	<servlet-name>MainController</servlet-name>
   	<servlet-class>controller.MainController</servlet-class>
   </servlet>
-  <!-- 
-  계속 페이지 추가를 할수 없으므로 commendURI.properties 파일을 만들어서 매핑한다
-  -->
   <servlet-mapping>
   	<servlet-name>MainController</servlet-name>
   	<url-pattern>/hello.do</url-pattern>
   </servlet-mapping>
+  <!-- 
+  	계속 페이지 추가를 할수 없으므로 한번만 매핑하고 commendURI.properties 파일을 만들어서 매핑한다
   <servlet-mapping>
   	<servlet-name>MainController</servlet-name>
   	<url-pattern>/welcome.do</url-pattern>
@@ -34,5 +33,19 @@
   	<servlet-name>MainController</servlet-name>
   	<url-pattern>/introduce.do</url-pattern>
   </servlet-mapping> 
-  
+  -->
+	
+  <!-- UTF-8 인코딩 필터 등록 -->
+  <filter>
+  	<filter-name>encodingFilter</filter-name>
+  	<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+  	<init-param><!-- 위치:자바-라이브러리-아파치-카탈리나에 있는걸 활용 -->
+  		<param-name>encoding</param-name>
+  		<param-value>UTF-8</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>encodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern><!-- 특정페이지가 아니라 모든 페이지 -->
+  </filter-mapping>
 </web-app>
