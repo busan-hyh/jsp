@@ -1,4 +1,4 @@
-package kr.co.board1.vo;
+package board2.vo;
 
 public class MemberVO {
 	private int seq;
