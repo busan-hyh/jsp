@@ -14,6 +14,10 @@ public class SQL {
 											+ "(parent, oldName, newName, rdate) "
 											+ "VALUES (?,?,?,NOW())";
 	public static final String SELECT_MAXS	= "SELECT MAX(seq) FROM `JSP_BOARD`";
+	public static final String SELECT_UID_COUNT = "SELECT COUNT(*) FROM `JSP_MEMBER` WHERE uid=?";
+	public static final String SELECT_NICK_COUNT = "SELECT COUNT(*) FROM `JSP_MEMBER` WHERE nick=?";
+	public static final String SELECT_EMAIL_COUNT = "SELECT COUNT(*) FROM `JSP_MEMBER` WHERE email=?";
+	public static final String SELECT_HP_COUNT = "SELECT COUNT(*) FROM `JSP_MEMBER` WHERE hp=?";
 	public static final String SELECT_LIST	= "SELECT b.*, m.nick FROM JSP_BOARD "
 											+ "AS b JOIN JSP_MEMBER AS m ON b.uid = m.uid "
 											+ "WHERE parent=0 ORDER BY b.seq DESC "

@@ -1,6 +1,7 @@
 package board2.controller;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -21,6 +22,7 @@ public class MainController extends HttpServlet {
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
+		//init에 있는애들은 수정하면 init이 실행되어야 수정이 반영되므로 서버를 껐다켜야함
 		ServletContext ctx = config.getServletContext();
 		String path = ctx.getRealPath("/WEB-INF")+"/commandURI.properties";
 		
@@ -80,6 +82,9 @@ public class MainController extends HttpServlet {
 			//리다이렉트 문자열이 result로 들어오는 경우
 			String redirectAddr = result.substring(9);//redirect: 부분 자르기
 			resp.sendRedirect(redirectAddr);
+		} else if(result.startsWith("{")) {
+			PrintWriter out = resp.getWriter();
+			out.print(result);
 		} else {
 			//일반적인 ~~.do를 통해 ~~.jsp가 result로 들어온 경우
 			RequestDispatcher dispatcher = req.getRequestDispatcher(result);
