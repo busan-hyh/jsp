@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,41 +9,42 @@
   <body>
     <div id="wrapper">
       <header>
-        <a href="../index.html" class="logo"><img src="../img/logo.png" /></a>
+        <a href="../index.do" class="logo"><img src="../img/logo.png" /></a>
         <p>
-          <a href="../index.html">HOME | </a>
+          <a href="../index.do">HOME | </a>
           <a href="#">로그인 | </a>
           <a href="#">회원가입 | </a>
           <a href="#">고객센터</a>
         </p>
         <img src="../img/head_txt_img.png" alt="3만원 이상 무료배송" />
         <ul class="gnb">
-          <li><a href="../introduction/hello.html">팜스토리소개</a></li>
-          <li><a href="../market/market.html"><img src="../img/head_menu_badge.png" alt="">장보기</a></li>
-          <li><a href="../croptalk/story.html">농작물이야기</a></li>
-          <li><a href="../event/event.html">이벤트</a></li>
-          <li><a href="../community/notice.html">커뮤니티</a></li>
+          <li><a href="../introduction/hello.do">팜스토리소개</a></li>
+          <li><a href="../market/market.do"><img src="../img/head_menu_badge.png" alt="">장보기</a></li>
+          <li><a href="../croptalk/story.do">농작물이야기</a></li>
+          <li><a href="../event/event.do">이벤트</a></li>
+          <li><a href="../community/notice.do">커뮤니티</a></li>
         </ul>
       </header>
       <section id="sub">
         <div>
-          <img src="../img/sub_top_tit1.png" alt="INTRODUCTION" />
+          <img src="../img/sub_top_tit3.png" alt="CROP TALK" />
         </div>
-        <div>
+        <div class="croptalk">
           <aside>
             <img src="../img/sub_aside_bg_line.png" alt="line" />
-            <img src="../img/sub_aside_cate1_tit.png" alt="팜스토리 소개" />
+            <img src="../img/sub_aside_cate3_tit.png" alt="농작물 이야기" />
             <ul>
-              <li><a href="./hello.html">인사말</a></li>
-              <li class="on"><a href="./direction.html">찾아오시는길</a></li>
+              <li><a href="./story.do">인사말</a></li>
+              <li><a href="./farm.do">텃밭 가꾸기</a></li>
+              <li class="on"><a href="./school.do">귀농학교</a></li>
             </ul>
           </aside>
           <article>
             <nav>
-              <img src="../img/sub_nav_tit_cate1_tit2.png" alt="인사말" />
+              <img src="../img/sub_nav_tit_cate3_tit3.png" alt="귀농학교" />
 
               <p>
-                <img src="../img/sub_page_nav_ico.gif" alt="::"> HOME > 팜스토리소개 > <strong>찾아오시는길</strong>
+                <img src="../img/sub_page_nav_ico.gif" alt="::"> HOME > 농작물이야기 > <strong>귀농학교</strong>
               </p>
             </nav>
               <!-- 내용시작 -->

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,20 +9,20 @@
   <body>
     <div id="wrapper">
       <header>
-        <a href="../index.html" class="logo"><img src="../img/logo.png" /></a>
+        <a href="../index.do" class="logo"><img src="../img/logo.png" /></a>
         <p>
-          <a href="../index.html">HOME | </a>
+          <a href="../index.do">HOME | </a>
           <a href="#">로그인 | </a>
           <a href="#">회원가입 | </a>
           <a href="#">고객센터</a>
         </p>
         <img src="../img/head_txt_img.png" alt="3만원 이상 무료배송" />
         <ul class="gnb">
-          <li><a href="../introduction/hello.html">팜스토리소개</a></li>
-          <li><a href="../market/market.html"><img src="../img/head_menu_badge.png" alt="">장보기</a></li>
-          <li><a href="../croptalk/story.html">농작물이야기</a></li>
-          <li><a href="../event/event.html">이벤트</a></li>
-          <li><a href="../community/notice.html">커뮤니티</a></li>
+          <li><a href="../introduction/hello.do">팜스토리소개</a></li>
+          <li><a href="../market/market.do"><img src="../img/head_menu_badge.png" alt="">장보기</a></li>
+          <li><a href="../croptalk/story.do">농작물이야기</a></li>
+          <li><a href="../event/event.do">이벤트</a></li>
+          <li><a href="../community/notice.do">커뮤니티</a></li>
         </ul>
       </header>
       <section id="sub">
@@ -33,8 +34,8 @@
             <img src="../img/sub_aside_bg_line.png" alt="line" />
             <img src="../img/sub_aside_cate1_tit.png" alt="팜스토리 소개" />
             <ul>
-              <li class="on"><a href="./hello.html">인사말</a></li>
-              <li><a href="./direction.html">찾아오시는길</a></li>
+              <li class="on"><a href="./hello.do">인사말</a></li>
+              <li><a href="./direction.do">찾아오시는길</a></li>
             </ul>
           </aside>
           <article>
