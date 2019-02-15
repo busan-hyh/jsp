@@ -1,5 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../_header.jsp" %>		
+<%@ include file="../_header.jsp" %>	
+<script>
+	//$(document).ready(function(){});//익명함수, 핸들러
+	$(document).ready(function(){
+		$('.btnNext').click(function(){//선택자함수.중에서 버튼이벤트, 클릭함수. 콜백(예전엔 onClick썼음)
+			var rs1 = $('input[name=chk1]').is(':checked');//속성 선택자. chk1 is checked면 true
+			var rs2 = $('input[name=chk2]').is(':checked');
+			if(!rs1){
+				alert('이용약관에 동의하세요');
+				return false;//안넘어가게
+			} else if(!rs2) {
+				alert('개인정보약관에 동의하세요');
+				return false;
+			} else { return true; }
+		});
+	});
+</script>		
 <body>
 <div id="terms">
 	<section>

@@ -10,7 +10,7 @@
 			//console.log('입력값 : '+value);
 			if(value.length >= 4){
 				//console.log('실행!');
-				var api = '/ch19boardModel2/member/usercheck.do?uid='+value;
+				var api = '/farmstory/member/usercheck.do?uid='+value;
 				//ajax 통신이 있지만 지금 필요한건 json으로 받는것뿐이므로↓
 				//제이슨 전용 통신함수 : $.getJSON('url', function(){}); 전형적인 콜백함수.. url로 콜/함수로 백
 				//UserCheckService.java에게 콜하고 JSON을 백받는다. JAON은 (data)가 된다.
