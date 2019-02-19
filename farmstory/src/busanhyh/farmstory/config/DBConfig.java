@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class DBConfig {
 	//:3306/hyh?noAccessToProcedureBodies=true 는 프로시저 실행을 위해 필요한듯?? 스프링에서 쓰임!
-	private static final String HOST = "jdbc:mysql://192.168.0.126:3306/hyh";
+	private static final String HOST = "jdbc:mysql://192.168.0.161:3306/hyh";
 	private static final String USER = "hyh";
 	private static final String PASS = "1234";
 	
