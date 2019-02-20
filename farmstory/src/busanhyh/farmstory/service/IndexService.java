@@ -9,7 +9,7 @@ public class IndexService implements CommonAction {
 
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		// TODO Auto-generated method stub
+
 		return "/index.jsp";
 	}
 

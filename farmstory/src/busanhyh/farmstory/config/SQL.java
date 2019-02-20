@@ -20,13 +20,13 @@ public class SQL {
 	public static final String SELECT_HP_COUNT = "SELECT COUNT(*) FROM `JSP_MEMBER` WHERE hp=?";
 	public static final String SELECT_LIST	= "SELECT b.*, m.nick FROM JSP_BOARD "
 											+ "AS b JOIN JSP_MEMBER AS m ON b.uid = m.uid "
-											+ "WHERE parent=0 ORDER BY b.seq DESC "
+											+ "WHERE parent=0 AND cate=? ORDER BY b.seq DESC "
 											+ "LIMIT ?,10";
 	public static final String SELECT_VIEW	= "SELECT * FROM `JSP_BOARD` WHERE seq=?";
 	public static final String SELECT_VIEW_WIHT_FILE = "SELECT * FROM `JSP_BOARD` AS B "
 											+ "LEFT JOIN `JSP_FILE` AS F ON B.seq = F.parent "
 											+ "WHERE B.seq=?";
-	public static final String SELECT_TOTAL	= "SELECT COUNT(*) FROM `JSP_BOARD` WHERE parent=0";
+	public static final String SELECT_TOTAL	= "SELECT COUNT(*) FROM `JSP_BOARD` WHERE parent=0 AND cate=?";
 	public static final String UPDATE_HIT	= "UPDATE `JSP_BOARD` SET hit=hit+1 WHERE seq=?";
 	public static final String UPDATE_DOWN_HIT = "UPDATE `JSP_FILE` SET download=download+1 WHERE parent=?";
 	public static final String DELETE_HIT	= "UPDATE `JSP_BOARD` SET comment=comment-1 WHERE seq=?";

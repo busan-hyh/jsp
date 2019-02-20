@@ -60,14 +60,19 @@ header > .gnb > li a {
 }
 header > .gnb > li:nth-child(1) a { background: url('../img/head_menu1.png') no-repeat;}
 header > .gnb > li:nth-child(1) a:hover { background: url('../img/head_menu1_ov.png') no-repeat;}
+header > .gnb > li:nth-child(1).on a { background: url('../img/head_menu1_ov.png') no-repeat;}
 header > .gnb > li:nth-child(2) a { position: relative; background: url('../img/head_menu2.png') no-repeat;}
 header > .gnb > li:nth-child(2) a:hover { background: url('../img/head_menu2_ov.png') no-repeat;}
+header > .gnb > li:nth-child(2).on a { background: url('../img/head_menu2_ov.png') no-repeat;}
 header > .gnb > li:nth-child(3) a { background: url('../img/head_menu3.png') no-repeat;}
 header > .gnb > li:nth-child(3) a:hover { background: url('../img/head_menu3_ov.png') no-repeat;}
+header > .gnb > li:nth-child(3).on a { background: url('../img/head_menu3_ov.png') no-repeat;}
 header > .gnb > li:nth-child(4) a { background: url('../img/head_menu4.png') no-repeat;}
 header > .gnb > li:nth-child(4) a:hover { background: url('../img/head_menu4_ov.png') no-repeat;}
+header > .gnb > li:nth-child(4).on a { background: url('../img/head_menu4_ov.png') no-repeat;}
 header > .gnb > li:nth-child(5) a { background: url('../img/head_menu5.png') no-repeat;}
 header > .gnb > li:nth-child(5) a:hover { background: url('../img/head_menu5_ov.png') no-repeat;}
+header > .gnb > li:nth-child(5).on a { background: url('../img/head_menu5_ov.png') no-repeat;}
 header > .gnb > li:nth-child(2) > a > img {
   position: absolute;
   left: 93px;
@@ -231,7 +236,7 @@ footer img {
 }
 footer > .footer_txt {
   position: absolute;
-  top: 28px;
+  top: 24px;
   left: 186px;
   font-size: 11px;
   color: #585858;

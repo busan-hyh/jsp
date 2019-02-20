@@ -8,7 +8,8 @@
 			<table>
 				<tr>
 					<td>제목</td>
-					<input type="hidden" name="uid" value="${ member.uid }" />
+					<input type="hidden" name="gr" value="${ gr }" />
+					<input type="hidden" name="cate" value="${ cate }" />
 						<td><input type="text" name="subject" placeholder="제목을 입력하세요." required /></td>
 				</tr>				
 				<tr>

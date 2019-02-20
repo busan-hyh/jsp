@@ -9,7 +9,9 @@ public class HelloService implements CommonAction {
 
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		// TODO Auto-generated method stub
+		String gr = req.getParameter("gr");
+		req.setAttribute("gr", gr);
+		
 		return "/introduction/hello.jsp";
 	}
 
