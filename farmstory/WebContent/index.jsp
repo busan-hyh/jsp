@@ -23,93 +23,39 @@
             <img src="./img/main_latest1_tit.png" alt="">
             <img src="./img/main_latest1_img.jpg" alt="">
             <table border="0">
+              <c:forEach var="vo" items="${ latest1 }">
               <tr>
                 <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
+                <td>${ vo.title }</td>
+                <td>${ vo.rdate }</td>
               </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
+              </c:forEach>
             </table>
           </div>
           <div>
             <img src="./img/main_latest2_tit.png" alt="">
             <img src="./img/main_latest2_img.jpg" alt="">
             <table border="0">
+              <c:forEach var="vo" items="${ latest2 }">
               <tr>
                 <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
+                <td><a href="#">${ vo.title }</a></td>
+                <td>${ vo.rdate }</td>
               </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
+              </c:forEach>
             </table>
           </div>
           <div>
             <img src="./img/main_latest3_tit.png" alt="">
             <img src="./img/main_latest3_img.jpg" alt="">
             <table border="0">
+              <c:forEach var="vo" items="${ latest3 }">
               <tr>
                 <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
+                <td>${ vo.title }</td>
+                <td>${ vo.rdate }</td>
               </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
-              <tr>
-                <td>></td>
-                <td>토마토! 건강하게 길러서 안심하고 먹자</td>
-                <td>02-12</td>
-              </tr>
+              </c:forEach>
             </table>
           </div>
         </div>
