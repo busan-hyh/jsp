@@ -26,7 +26,7 @@
               <c:forEach var="vo" items="${ latest1 }">
               <tr>
                 <td>></td>
-                <td>${ vo.title }</td>
+                <td><a href="/farmstory/board/view.do?gr=croptalk&cate=farm&seq=${ vo.seq }">${ vo.title }</a></td>
                 <td>${ vo.rdate }</td>
               </tr>
               </c:forEach>
@@ -39,7 +39,7 @@
               <c:forEach var="vo" items="${ latest2 }">
               <tr>
                 <td>></td>
-                <td><a href="#">${ vo.title }</a></td>
+                <td><a href="/farmstory/board/view.do?gr=croptalk&cate=school&seq=${ vo.seq }">${ vo.title }</a></td>
                 <td>${ vo.rdate }</td>
               </tr>
               </c:forEach>
@@ -52,7 +52,7 @@
               <c:forEach var="vo" items="${ latest3 }">
               <tr>
                 <td>></td>
-                <td>${ vo.title }</td>
+                <td><a href="/farmstory/board/view.do?gr=croptalk&cate=story&seq=${ vo.seq }">${ vo.title }</a></td>
                 <td>${ vo.rdate }</td>
               </tr>
               </c:forEach>

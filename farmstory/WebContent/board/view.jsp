@@ -11,7 +11,7 @@
 					<td><input type="text" name="subject" value="${ vo.title }" readonly />
 					</td>
 				</tr>
-				
+				<c:if test="${ vo.file } != 0">
 				<tr>
 					<td>첨부파일</td>
 					<td>
@@ -19,7 +19,7 @@
 						<span>3회 다운로드</span>
 					</td>
 				</tr>
-				
+				</c:if>
 				<tr>
 					<td>내용</td>
 					<td>
@@ -28,8 +28,8 @@
 				</tr>
 			</table>
 			<div class="btns">
-				<a href="#" class="cancel del">삭제</a>
-				<a href="#" class="cancel mod">수정</a>
+				<a href="/farmstory/board/delete.do?gr=${ gr }&cate=${ cate }&seq=${ vo.seq }" class="cancel del">삭제</a>
+				<a href="/farmstory/board/modify.do?gr=${ gr }&cate=${ cate }&seq=${ vo.seq }" class="cancel mod">수정</a>
 				<a href="/farmstory/board/list.do?gr=${ gr }&cate=${ cate }" class="cancel">목록</a>
 			</div>
 		</form>

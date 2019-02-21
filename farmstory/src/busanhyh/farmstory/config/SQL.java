@@ -22,7 +22,7 @@ public class SQL {
 											+ "AS b JOIN JSP_MEMBER AS m ON b.uid = m.uid "
 											+ "WHERE parent=0 AND cate=? ORDER BY b.seq DESC "
 											+ "LIMIT ?,10";
-	public static final String SELECT_LIST_INDEX = "SELECT seq, cate, title, SUBSTRING(rdate, 7, 4) AS rdate FROM JSP_BOARD WHERE parent=0 AND cate=? ORDER BY seq DESC LIMIT 5";
+	public static final String SELECT_LIST_INDEX = "SELECT seq, title, SUBSTRING(rdate, 7, 4) AS rdate FROM JSP_BOARD WHERE parent=0 AND cate=? ORDER BY seq DESC LIMIT 5";
 	public static final String SELECT_VIEW	= "SELECT * FROM `JSP_BOARD` WHERE seq=?";
 	public static final String SELECT_VIEW_WIHT_FILE = "SELECT * FROM `JSP_BOARD` AS B "
 											+ "LEFT JOIN `JSP_FILE` AS F ON B.seq = F.parent "

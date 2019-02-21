@@ -42,7 +42,6 @@ public class IndexService implements CommonAction {
 		while(rs.next()){
 			BoardVO vo = new BoardVO();
 			vo.setSeq(rs.getInt("seq"));
-			vo.setCate(rs.getString("cate"));
 			vo.setTitle(rs.getString("title"));
 			vo.setRdate(rs.getString("rdate"));
 			
